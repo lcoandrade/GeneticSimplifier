@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/geneticsimplifier" >
+        <file>geneticSimplify.png</file>
+    </qresource>
+</RCC>
