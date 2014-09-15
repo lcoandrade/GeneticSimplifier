@@ -26,9 +26,9 @@ email=luiz.claudio@dsg.eb.mil.br
 # tags are comma separated with spaces allowed
 tags=Genetic Algorithms Line Simplifier
 
-homepage=
-tracker=
-repository=
+homepage=https://hub.qgis.org/projects/geneticsimplifier
+tracker=https://hub.qgis.org/projects/geneticsimplifier
+repository=https://github.com/lcoandrade/GeneticSimplifier
 icon=icon.png
 # experimental flag
 experimental=False
