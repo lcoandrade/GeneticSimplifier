@@ -51,6 +51,9 @@ class GeneticSimplifier(QThread):
         self.NGEN = generations
         self.outputName = output
         
+        self.pointsBefore = 0
+        self.pointsAfter = 0
+        
         # QThread
         self.mutex = QMutex()
         self.stopMe = 0
@@ -77,7 +80,7 @@ class GeneticSimplifier(QThread):
         self.createOutputLayer(self.outputName)
         
         # Processing ending
-        self.emit( SIGNAL( "processingFinished()" ) )
+        self.emit( SIGNAL( "processingFinished( PyQt_PyObject )" ), (self.pointsBefore, self.pointsAfter) )
         
     def stop( self ):
         # Stopping the thread
@@ -96,6 +99,7 @@ class GeneticSimplifier(QThread):
             if doEvolution:
                 self.evolution(CXPB, MUTPB, NGEN)
             self.featuresDict[feature] = self.getBestIndividual()
+            self.pointsBefore += self.geomVertexCount(feature.geometry())
             # Updating progress
             self.emit( SIGNAL( "featureProcessed()" ) )
 
@@ -302,6 +306,7 @@ class GeneticSimplifier(QThread):
             # Creating the new geometry
             newGeom = QgsGeometry()
             newGeom.fromWkb(newWkb)
+            self.pointsAfter += self.geomVertexCount(newGeom)
 
             # Setting the geometry on the new feture
             feature.setGeometry(newGeom)
@@ -319,6 +324,30 @@ class GeneticSimplifier(QThread):
         
         # Show the output layer
         self.emit( SIGNAL( "layerCreated( PyQt_PyObject )" ), outLayer )
+        
+    def geomVertexCount(self, geometry ):
+        """Calculates the number of vertexes in a geometry.
+        """
+        geomType = geometry.type()
+        if geomType == QGis.Line:
+            if geometry.isMultipart():
+                pointsList = geometry.asMultiPolyline()
+                points = sum( pointsList, [] )
+            else:
+                points = geometry.asPolyline()
+            return len( points )
+        elif geomType == QGis.Polygon:
+            if geometry.isMultipart():
+                polylinesList = geometry.asMultiPolygon()
+                polylines = sum( polylinesList, [] )
+            else:
+                polylines = geometry.asPolygon()
+            points = []
+            for l in polylines:
+                points.extend( l )
+            return len( points )
+        else:
+            return None        
 
 if __name__ == '__main__':
     pass
