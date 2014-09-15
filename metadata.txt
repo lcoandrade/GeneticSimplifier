@@ -29,7 +29,7 @@ tags=Genetic Algorithms Line Simplifier
 homepage=https://hub.qgis.org/projects/geneticsimplifier
 tracker=https://hub.qgis.org/projects/geneticsimplifier
 repository=https://github.com/lcoandrade/GeneticSimplifier
-icon=icon.png
+icon=geneticSimplify.png
 # experimental flag
 experimental=False
 
