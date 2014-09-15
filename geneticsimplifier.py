@@ -103,7 +103,7 @@ class GeneticSimplifier:
             self.geneticThread = genetic_simplifier.GeneticSimplifier(self.dlg.ui.popSpin.value(), self.dlg.ui.spinBox.value(), self.dlg.currentLayer, self.dlg.ui.mateCombo.currentIndex(), self.dlg.ui.geneSpin.value(), self.dlg.ui.evolutionGroup.isChecked(), self.dlg.ui.crossSpin.value()/100, self.dlg.ui.mutationSpin.value()/100, self.dlg.ui.genSpin.value(), self.dlg.ui.outputEdit.text())
             QObject.connect( self.geneticThread, SIGNAL( "rangeCalculated( PyQt_PyObject )" ), self.setProgressRange )
             QObject.connect( self.geneticThread, SIGNAL( "featureProcessed()" ), self.featureProcessed )
-            QObject.connect( self.geneticThread, SIGNAL( "processingFinished()" ), self.processFinished )
+            QObject.connect( self.geneticThread, SIGNAL( "processingFinished( PyQt_PyObject )" ), self.processFinished )
             QObject.connect( self.geneticThread, SIGNAL( "layerCreated( PyQt_PyObject )" ), self.layerCreated )
 
             # Startin the processing
@@ -115,10 +115,12 @@ class GeneticSimplifier:
     def featureProcessed( self ):
         self.progressBar.setValue( self.progressBar.value() + 1 )
 
-    def processFinished( self ):
+    def processFinished( self, pointsCount ):
         if self.geneticThread != None:
             self.geneticThread.stop()
             self.geneticThread = None
+            
+        QMessageBox.information(self.iface.mainWindow(), "Simplify results","There were %d vertices in original dataset which\nwere reduced to %d vertices after simplification" % ( pointsCount[ 0 ], pointsCount[ 1 ] ) )
         
     def layerCreated(self, outLayer):
         QgsMapLayerRegistry.instance().addMapLayers([outLayer])
