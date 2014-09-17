@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file 'ui_geneticsimplifier.ui'
 #
-# Created: Wed Sep 17 11:42:24 2014
+# Created: Wed Sep 17 11:56:53 2014
 #      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
@@ -63,7 +63,7 @@ class Ui_GeneticSimplifier(object):
         self.popSpin = QtGui.QSpinBox(GeneticSimplifier)
         self.popSpin.setMinimum(1)
         self.popSpin.setMaximum(10000)
-        self.popSpin.setProperty(_fromUtf8("value"), 5)
+        self.popSpin.setProperty(_fromUtf8("value"), 1)
         self.popSpin.setObjectName(_fromUtf8("popSpin"))
         self.horizontalLayout_3.addWidget(self.popSpin)
         self.gridLayout_3.addLayout(self.horizontalLayout_3, 3, 0, 1, 1)
@@ -167,7 +167,7 @@ class Ui_GeneticSimplifier(object):
         self.featureLabel.setText(QtGui.QApplication.translate("GeneticSimplifier", "features", None, QtGui.QApplication.UnicodeUTF8))
         self.outputEdit_2.setText(QtGui.QApplication.translate("GeneticSimplifier", "Output Layer Name:", None, QtGui.QApplication.UnicodeUTF8))
         self.popSizeLabel.setText(QtGui.QApplication.translate("GeneticSimplifier", "Population Size:", None, QtGui.QApplication.UnicodeUTF8))
-        self.popSpin.setToolTip(QtGui.QApplication.translate("GeneticSimplifier", "Number of possible solutions tested for each line.", None, QtGui.QApplication.UnicodeUTF8))
+        self.popSpin.setToolTip(QtGui.QApplication.translate("GeneticSimplifier", "Number of possible solutions tested for each line. Use 1 for faster results.", None, QtGui.QApplication.UnicodeUTF8))
         self.restrictionLabel.setText(QtGui.QApplication.translate("GeneticSimplifier", "Shape Restriction:", None, QtGui.QApplication.UnicodeUTF8))
         self.spinBox.setToolTip(QtGui.QApplication.translate("GeneticSimplifier", "Maximum deviation from the original line.", None, QtGui.QApplication.UnicodeUTF8))
         self.useLocalSearchBox.setToolTip(QtGui.QApplication.translate("GeneticSimplifier", "Makes the number of vertexes in the simplification quite smaller but makes the algorithm quite slower as well.", None, QtGui.QApplication.UnicodeUTF8))
