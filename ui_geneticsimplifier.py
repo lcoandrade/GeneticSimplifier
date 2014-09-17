@@ -2,8 +2,8 @@
 
 # Form implementation generated from reading ui file 'ui_geneticsimplifier.ui'
 #
-# Created: Sun Sep 14 13:50:40 2014
-#      by: PyQt4 UI code generator 4.10.2
+# Created: Wed Sep 17 11:42:24 2014
+#      by: PyQt4 UI code generator 4.8.3
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -12,21 +12,12 @@ from PyQt4 import QtCore, QtGui
 try:
     _fromUtf8 = QtCore.QString.fromUtf8
 except AttributeError:
-    def _fromUtf8(s):
-        return s
-
-try:
-    _encoding = QtGui.QApplication.UnicodeUTF8
-    def _translate(context, text, disambig):
-        return QtGui.QApplication.translate(context, text, disambig, _encoding)
-except AttributeError:
-    def _translate(context, text, disambig):
-        return QtGui.QApplication.translate(context, text, disambig)
+    _fromUtf8 = lambda s: s
 
 class Ui_GeneticSimplifier(object):
     def setupUi(self, GeneticSimplifier):
         GeneticSimplifier.setObjectName(_fromUtf8("GeneticSimplifier"))
-        GeneticSimplifier.resize(587, 276)
+        GeneticSimplifier.resize(587, 295)
         self.gridLayout_3 = QtGui.QGridLayout(GeneticSimplifier)
         self.gridLayout_3.setObjectName(_fromUtf8("gridLayout_3"))
         self.horizontalLayout = QtGui.QHBoxLayout()
@@ -72,7 +63,7 @@ class Ui_GeneticSimplifier(object):
         self.popSpin = QtGui.QSpinBox(GeneticSimplifier)
         self.popSpin.setMinimum(1)
         self.popSpin.setMaximum(10000)
-        self.popSpin.setProperty("value", 5)
+        self.popSpin.setProperty(_fromUtf8("value"), 5)
         self.popSpin.setObjectName(_fromUtf8("popSpin"))
         self.horizontalLayout_3.addWidget(self.popSpin)
         self.gridLayout_3.addLayout(self.horizontalLayout_3, 3, 0, 1, 1)
@@ -88,6 +79,10 @@ class Ui_GeneticSimplifier(object):
         self.spinBox.setObjectName(_fromUtf8("spinBox"))
         self.horizontalLayout_4.addWidget(self.spinBox)
         self.gridLayout_3.addLayout(self.horizontalLayout_4, 3, 1, 1, 1)
+        self.useLocalSearchBox = QtGui.QCheckBox(GeneticSimplifier)
+        self.useLocalSearchBox.setChecked(True)
+        self.useLocalSearchBox.setObjectName(_fromUtf8("useLocalSearchBox"))
+        self.gridLayout_3.addWidget(self.useLocalSearchBox, 4, 0, 1, 1)
         self.gridLayout_2 = QtGui.QGridLayout()
         self.gridLayout_2.setObjectName(_fromUtf8("gridLayout_2"))
         self.evolutionGroup = QtGui.QGroupBox(GeneticSimplifier)
@@ -123,7 +118,7 @@ class Ui_GeneticSimplifier(object):
         self.crossSpin = QtGui.QSpinBox(self.evolutionGroup)
         self.crossSpin.setMinimum(1)
         self.crossSpin.setMaximum(100)
-        self.crossSpin.setProperty("value", 50)
+        self.crossSpin.setProperty(_fromUtf8("value"), 50)
         self.crossSpin.setObjectName(_fromUtf8("crossSpin"))
         self.horizontalLayout_8.addWidget(self.crossSpin)
         self.gridLayout.addLayout(self.horizontalLayout_8, 1, 1, 1, 1)
@@ -135,7 +130,7 @@ class Ui_GeneticSimplifier(object):
         self.mutationSpin = QtGui.QSpinBox(self.evolutionGroup)
         self.mutationSpin.setMinimum(1)
         self.mutationSpin.setMaximum(100)
-        self.mutationSpin.setProperty("value", 20)
+        self.mutationSpin.setProperty(_fromUtf8("value"), 20)
         self.mutationSpin.setObjectName(_fromUtf8("mutationSpin"))
         self.horizontalLayout_9.addWidget(self.mutationSpin)
         self.gridLayout.addLayout(self.horizontalLayout_9, 2, 0, 1, 1)
@@ -147,17 +142,17 @@ class Ui_GeneticSimplifier(object):
         self.geneSpin = QtGui.QSpinBox(self.evolutionGroup)
         self.geneSpin.setMinimum(1)
         self.geneSpin.setMaximum(100)
-        self.geneSpin.setProperty("value", 5)
+        self.geneSpin.setProperty(_fromUtf8("value"), 5)
         self.geneSpin.setObjectName(_fromUtf8("geneSpin"))
         self.horizontalLayout_10.addWidget(self.geneSpin)
         self.gridLayout.addLayout(self.horizontalLayout_10, 2, 1, 1, 1)
         self.gridLayout_2.addWidget(self.evolutionGroup, 0, 0, 1, 1)
-        self.gridLayout_3.addLayout(self.gridLayout_2, 4, 0, 1, 2)
+        self.gridLayout_3.addLayout(self.gridLayout_2, 5, 0, 1, 2)
         self.buttonBox = QtGui.QDialogButtonBox(GeneticSimplifier)
         self.buttonBox.setOrientation(QtCore.Qt.Horizontal)
         self.buttonBox.setStandardButtons(QtGui.QDialogButtonBox.Cancel|QtGui.QDialogButtonBox.Ok)
         self.buttonBox.setObjectName(_fromUtf8("buttonBox"))
-        self.gridLayout_3.addWidget(self.buttonBox, 5, 1, 1, 1)
+        self.gridLayout_3.addWidget(self.buttonBox, 6, 1, 1, 1)
 
         self.retranslateUi(GeneticSimplifier)
         QtCore.QObject.connect(self.buttonBox, QtCore.SIGNAL(_fromUtf8("accepted()")), GeneticSimplifier.accept)
@@ -165,17 +160,27 @@ class Ui_GeneticSimplifier(object):
         QtCore.QMetaObject.connectSlotsByName(GeneticSimplifier)
 
     def retranslateUi(self, GeneticSimplifier):
-        GeneticSimplifier.setWindowTitle(_translate("GeneticSimplifier", "GeneticSimplifier", None))
-        self.inputLabel.setText(_translate("GeneticSimplifier", "Input Layer:", None))
-        self.featCountLabel.setText(_translate("GeneticSimplifier", "The selected layer contains:", None))
-        self.featureLabel.setText(_translate("GeneticSimplifier", "features", None))
-        self.outputEdit_2.setText(_translate("GeneticSimplifier", "Output Layer Name:", None))
-        self.popSizeLabel.setText(_translate("GeneticSimplifier", "Population Size:", None))
-        self.restrictionLabel.setText(_translate("GeneticSimplifier", "Shape Restriction:", None))
-        self.evolutionGroup.setTitle(_translate("GeneticSimplifier", "Use Evolution?", None))
-        self.generationsLabel.setText(_translate("GeneticSimplifier", "Number of Generations:", None))
-        self.mateLabel.setText(_translate("GeneticSimplifier", "Mate Type:", None))
-        self.croosLabel.setText(_translate("GeneticSimplifier", "Crossover Probability (%):", None))
-        self.mutationLabel.setText(_translate("GeneticSimplifier", "Mutation Probability (%):", None))
-        self.geneLabel.setText(_translate("GeneticSimplifier", "Gene Mutation Probability (%):", None))
+        GeneticSimplifier.setWindowTitle(QtGui.QApplication.translate("GeneticSimplifier", "GeneticSimplifier", None, QtGui.QApplication.UnicodeUTF8))
+        self.inputLabel.setText(QtGui.QApplication.translate("GeneticSimplifier", "Input Layer:", None, QtGui.QApplication.UnicodeUTF8))
+        self.inputLayerCombo.setToolTip(QtGui.QApplication.translate("GeneticSimplifier", "Just line layers can be used.", None, QtGui.QApplication.UnicodeUTF8))
+        self.featCountLabel.setText(QtGui.QApplication.translate("GeneticSimplifier", "The selected layer contains:", None, QtGui.QApplication.UnicodeUTF8))
+        self.featureLabel.setText(QtGui.QApplication.translate("GeneticSimplifier", "features", None, QtGui.QApplication.UnicodeUTF8))
+        self.outputEdit_2.setText(QtGui.QApplication.translate("GeneticSimplifier", "Output Layer Name:", None, QtGui.QApplication.UnicodeUTF8))
+        self.popSizeLabel.setText(QtGui.QApplication.translate("GeneticSimplifier", "Population Size:", None, QtGui.QApplication.UnicodeUTF8))
+        self.popSpin.setToolTip(QtGui.QApplication.translate("GeneticSimplifier", "Number of possible solutions tested for each line.", None, QtGui.QApplication.UnicodeUTF8))
+        self.restrictionLabel.setText(QtGui.QApplication.translate("GeneticSimplifier", "Shape Restriction:", None, QtGui.QApplication.UnicodeUTF8))
+        self.spinBox.setToolTip(QtGui.QApplication.translate("GeneticSimplifier", "Maximum deviation from the original line.", None, QtGui.QApplication.UnicodeUTF8))
+        self.useLocalSearchBox.setToolTip(QtGui.QApplication.translate("GeneticSimplifier", "Makes the number of vertexes in the simplification quite smaller but makes the algorithm quite slower as well.", None, QtGui.QApplication.UnicodeUTF8))
+        self.useLocalSearchBox.setText(QtGui.QApplication.translate("GeneticSimplifier", "Use local search?", None, QtGui.QApplication.UnicodeUTF8))
+        self.evolutionGroup.setTitle(QtGui.QApplication.translate("GeneticSimplifier", "Use Evolution?", None, QtGui.QApplication.UnicodeUTF8))
+        self.generationsLabel.setText(QtGui.QApplication.translate("GeneticSimplifier", "Number of Generations:", None, QtGui.QApplication.UnicodeUTF8))
+        self.genSpin.setToolTip(QtGui.QApplication.translate("GeneticSimplifier", "Number of generations analyzed.", None, QtGui.QApplication.UnicodeUTF8))
+        self.mateLabel.setText(QtGui.QApplication.translate("GeneticSimplifier", "Mate Type:", None, QtGui.QApplication.UnicodeUTF8))
+        self.mateCombo.setToolTip(QtGui.QApplication.translate("GeneticSimplifier", "Type of crossover applied.", None, QtGui.QApplication.UnicodeUTF8))
+        self.croosLabel.setText(QtGui.QApplication.translate("GeneticSimplifier", "Crossover Probability (%):", None, QtGui.QApplication.UnicodeUTF8))
+        self.crossSpin.setToolTip(QtGui.QApplication.translate("GeneticSimplifier", "Probability to apply crossover.", None, QtGui.QApplication.UnicodeUTF8))
+        self.mutationLabel.setText(QtGui.QApplication.translate("GeneticSimplifier", "Mutation Probability (%):", None, QtGui.QApplication.UnicodeUTF8))
+        self.mutationSpin.setToolTip(QtGui.QApplication.translate("GeneticSimplifier", "Mutation probability on a possible solution.", None, QtGui.QApplication.UnicodeUTF8))
+        self.geneLabel.setText(QtGui.QApplication.translate("GeneticSimplifier", "Gene Mutation Probability (%):", None, QtGui.QApplication.UnicodeUTF8))
+        self.geneSpin.setToolTip(QtGui.QApplication.translate("GeneticSimplifier", "Probability to change the participation of a vertex in a possible solution.", None, QtGui.QApplication.UnicodeUTF8))
 
