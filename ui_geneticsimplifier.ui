@@ -85,7 +85,7 @@
      <item>
       <widget class="QSpinBox" name="popSpin">
        <property name="toolTip">
-        <string>Number of possible solutions tested for each line.</string>
+        <string>Number of possible solutions tested for each line. Use 1 for faster results.</string>
        </property>
        <property name="minimum">
         <number>1</number>
@@ -94,7 +94,7 @@
         <number>10000</number>
        </property>
        <property name="value">
-        <number>5</number>
+        <number>1</number>
        </property>
       </widget>
      </item>
