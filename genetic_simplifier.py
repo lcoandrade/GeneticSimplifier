@@ -31,7 +31,7 @@ from PyQt4.QtCore import *
 class GeneticSimplifier(QThread):
     """Evolutionary Algorithm Class to simplify line vector features.
     """
-    def __init__(self, population, shape, layer, mateType, geneProb, doEvolution, crossoverProb, mutationProb, generations, output):
+    def __init__(self, population, shape, layer, mateType, geneProb, doEvolution, crossoverProb, mutationProb, generations, output, useLocalSearch):
         """Constructor.
         """
         QThread.__init__( self, QThread.currentThread() )
@@ -50,6 +50,7 @@ class GeneticSimplifier(QThread):
         self.MUTPB = mutationProb
         self.NGEN = generations
         self.outputName = output
+        self.useLocalSearch = useLocalSearch
         
         self.pointsBefore = 0
         self.pointsAfter = 0
@@ -183,14 +184,15 @@ class GeneticSimplifier(QThread):
                 if(distance > self.limit):
                     individual[i - 1] = 1
 
-        # Perform local search to improve the individuals
-        for i in range(1, size - 1):
-            if individual[i - 1] == 1:
-                individual[i - 1] = 0
-                wkb = self.createSimplifiedLine(individual)
-                simplifiedLine = shapely.wkb.loads(wkb)
-                if self.buffer.contains(simplifiedLine) == False:
-                    individual[i - 1] = 1
+        if self.useLocalSearch == True:
+            # Perform local search to improve the individuals
+            for i in range(1, size - 1):
+                if individual[i - 1] == 1:
+                    individual[i - 1] = 0
+                    wkb = self.createSimplifiedLine(individual)
+                    simplifiedLine = shapely.wkb.loads(wkb)
+                    if self.buffer.contains(simplifiedLine) == False:
+                        individual[i - 1] = 1
 
         # If the line is suitable the less the number of points the better
         return sum(individual),
