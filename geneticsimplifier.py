@@ -100,7 +100,7 @@ class GeneticSimplifier:
             self.progressMessageBar.layout().addWidget(self.progressBar)
             self.iface.messageBar().pushWidget(self.progressMessageBar, self.iface.messageBar().INFO)
 
-            self.geneticThread = genetic_simplifier.GeneticSimplifier(self.dlg.ui.popSpin.value(), self.dlg.ui.spinBox.value(), self.dlg.currentLayer, self.dlg.ui.mateCombo.currentIndex(), self.dlg.ui.geneSpin.value(), self.dlg.ui.evolutionGroup.isChecked(), self.dlg.ui.crossSpin.value()/100, self.dlg.ui.mutationSpin.value()/100, self.dlg.ui.genSpin.value(), self.dlg.ui.outputEdit.text())
+            self.geneticThread = genetic_simplifier.GeneticSimplifier(self.dlg.ui.popSpin.value(), self.dlg.ui.spinBox.value(), self.dlg.currentLayer, self.dlg.ui.mateCombo.currentIndex(), self.dlg.ui.geneSpin.value(), self.dlg.ui.evolutionGroup.isChecked(), self.dlg.ui.crossSpin.value()/100, self.dlg.ui.mutationSpin.value()/100, self.dlg.ui.genSpin.value(), self.dlg.ui.outputEdit.text(), self.dlg.ui.useLocalSearchBox.isChecked())
             QObject.connect( self.geneticThread, SIGNAL( "rangeCalculated( PyQt_PyObject )" ), self.setProgressRange )
             QObject.connect( self.geneticThread, SIGNAL( "featureProcessed()" ), self.featureProcessed )
             QObject.connect( self.geneticThread, SIGNAL( "processingFinished( PyQt_PyObject )" ), self.processFinished )
