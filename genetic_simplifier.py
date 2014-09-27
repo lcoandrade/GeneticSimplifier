@@ -176,7 +176,7 @@ class GeneticSimplifier(QThread):
         # Check if the simplified line is inside the original buffer
         if self.buffer.contains(simplifiedLine) == False:
             # Check the distance from all points in the original geometry to the simplified line
-            for i in range(1, size - 1):
+            for i in xrange(1, size - 1):
                 point = shapely.geometry.Point(self.original.coords[i][0], self.original.coords[i][1])
                 distance = point.distance(simplifiedLine)
                 # If some point has a distance bigger than the limit it
@@ -186,7 +186,7 @@ class GeneticSimplifier(QThread):
 
         if self.useLocalSearch == True:
             # Perform local search to improve the individuals
-            for i in range(1, size - 1):
+            for i in xrange(1, size - 1):
                 if individual[i - 1] == 1:
                     individual[i - 1] = 0
                     wkb = self.createSimplifiedLine(individual)
@@ -211,7 +211,7 @@ class GeneticSimplifier(QThread):
         """Performs evolution on the population according to the parameters
          and the number of generations.
         """
-        for g in range(NGEN):
+        for g in xrange(NGEN):
             # Select the next generation individuals
             offspring = self.toolbox.select(self.population, len(self.population))
             # Clone the selected individuals
@@ -271,7 +271,7 @@ class GeneticSimplifier(QThread):
         simplifiedLine.AddPoint(start[0], start[1])
 
         # Check if the genes in the individual have value 1
-        for i in range(len(individual)):
+        for i in xrange(len(individual)):
             # If they have the value 1 the vertex i should be present in the simplified line
             if individual[i] == 1:
                 # Creating the simplified line
